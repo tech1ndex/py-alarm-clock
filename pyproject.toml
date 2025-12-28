@@ -1,206 +1,26 @@
-[build-system]
-requires = ["poetry-core>=2.0.0", "wheel",]
-build-backend = "poetry.core.masonry.api"
-
-
-[tool.coverage.run]
-source = ["src"]
-branch = true
-
-[tool.coverage.report]
-exclude_lines = [
-    "pragma: no cover",
-    "def __repr__",
-    "raise AssertionError",
-    "raise NotImplementedError",
-]
-
-
-[tool.poetry]
+[project]
 name = "py-alarm-clock"
 version = "0.1.0"
-description = "A simple Alarm Clock written with love in Python."
-package-mode = false
-packages = [
-    { include = "py_alarm_clock", from = "src" },
-]
-
-authors = ["Victor Bajada <bajada.victor@gmail.com>",]
-maintainers = ["Victor Bajada <bajada.victor@gmail.com>",]
-
-include = []
-license = "MIT"
+description = "A simple alarm clock application built with Python + Flet."
 readme = "README.md"
-
-repository = "https://github.com/tech1ndex/py-alarm-clock"
-documentation = "https://github.com/tech1ndex/py-alarm-clock/blob/main/README.md"
-
-keywords = [
-    "python3",
+requires-python = ">=3.10"
+authors = [
+    { name = "Victor Bajada", email = "vic@tech1ndex.ca" }
 ]
-classifiers = [
-    "Development Status :: 3 - Alpha",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: Implementation :: CPython",
-    "Programming Language :: Python :: Implementation :: PyPy",
-    "Typing :: Typed",
+dependencies = [
+  "flet>=0.80.0"
 ]
 
-
-[tool.poetry.dependencies]
-python="^3.13"
-pydantic = "^2.11.7"
-
-[tool.poetry.group.dev.dependencies]
-mypy = "*"
-
-[tool.poetry.group.linters]
-optional = true
-
-
-[tool.poetry.group.linters.dependencies]
-ruff = "^0.13.0"
-
-
-[tool.poetry.group.tests]
-optional = true
-
-[tool.poetry.scripts]
-py-alarm-clock = "py_alarm_clock.main:main"
-
-[tool.poetry.group.tests.dependencies]
-pytest = "^8.4.2"
-pytest-cov = "^7.0.0"
-tox = "^4.30.2"
-tox-gh-actions = "^3.2.0"
-
-
-[tool.poetry.urls]
-"Tracker" = "https://github.com/Diapolo10/project-name/issues"
-"Changelog" = "https://github.com/Diapolo10/project-name/blob/main/CHANGELOG.md"
-
-
-[tool.pytest.ini_options]
-pythonpath = ["src"]
-testpaths = [
-    "tests",
+[dependency-groups]
+dev = [
+  "flet[all]>=0.80.0",
 ]
 
-[tool.ruff]
-lint.select = [
-    "A",    # Builtins
-    "ANN",  # Annotations
-    "ARG",  # Unused arguments
-    "B",    # Bugbear
-    "BLE",  # Blind except
-    "C4",   # Comprehensions
-    "C90",  # mccabe
-    "COM",  # Commas
-    "D1",   # Undocumented public elements
-    "D2",   # Docstring conventions
-    "D3",   # Triple double quotes
-    "D4",   # Docstring text format
-    "DTZ",  # Datetimes
-    "EM",   # Error messages
-    "ERA",  # Commented-out code
-    "EXE",  # Executable
-    "F",    # Pyflakes
-    "FA",   # __future__ annotations
-    "FLY",  # F-strings
-    # "FURB", # Refurb
-    "G",    # Logging format
-    "I",    # Isort
-    "ICN",  # Import conventions
-    "INP",  # Disallow PEP-420 (Implicit namespace packages)
-    "INT",  # gettext
-    "ISC",  # Implicit str concat
-    # "LOG",  # Logging
-    "N",    # PEP-8 Naming
-    "NPY",  # Numpy
-    "PERF", # Unnecessary performance costs
-    "PGH",  # Pygrep hooks
-    "PIE",  # Unnecessary code
-    "PL",   # Pylint
-    "PT",   # Pytest
-    "PTH",  # Use Pathlib
-    "PYI",  # Stub files
-    "Q",    # Quotes
-    "RET",  # Return
-    "RUF",  # Ruff
-    "RSE",  # Raise
-    "S",    # Bandit
-    "SIM",  # Code simplification
-    "SLF",  # Private member access
-    "SLOT", # __slots__
-    "T10",  # Debugger
-    "T20",  # Print
-    "TCH",  # Type checking
-    "TID",  # Tidy imports
-    "TRY",  # Exception handling
-    "UP",   # Pyupgrade
-    "W",    # Warnings
-    "YTT",  # sys.version
-]
-lint.ignore = [
-    "D100",    # Missing docstring in public module
-    "D101",    # Missing docstring in public class
-    "D102",    # Missing docstring in public method
-    "D103",    # Missing docstring in public function
-    "D104",    # Missing docstring in public package
-    "D105",    # Missing docstring in magic method
-    "D106",    # Missing docstring in public nested class
-    "D107",    # Missing docstring in __init__
-    "D200",    # One-line docstring should fit on one line with quotes
-    "D201",    # No blank lines allowed before function docstring
-    "D202",    # No blank lines allowed after function docstring
-    "D203",    # One blank line before class docstring
-    "D212",    # Multi-line summary first line
-    "PLR0913", # Too many arguments
-    "Q000",    # Single quotes found but double quotes preferred
-    "G004",    # Logging statement string interpolation
-    "TC001",   # Unittest assert method
-    "TRY400",  # Catching Exception
-]
-line-length = 120
-fix = true
-src = ["src",]
-target-version = "py38"
+[tool.flet]
+org = "tech1ndex.dev"
+product = "py-alarm-clock"
+company = "tech1ndex"
+copyright = "Copyright (C) 2026 by tech1ndex.dev"
 
-
-[tool.ruff.lint.flake8-quotes]
-docstring-quotes = "double"
-multiline-quotes = "double"
-
-
-[tool.ruff.lint.mccabe]
-# Unlike Flake8, default to a complexity level of 10.
-max-complexity = 10
-
-
-[tool.ruff.lint.per-file-ignores]
-# https://beta.ruff.rs/docs/rules/
-"__init__.py" = ["F401","F403","F405",]
-"tests/*" = ["ANN", "ARG", "INP001", "S101",]
-"src/*" = ["ANN", "ARG", "INP001", "S101", "D102", "D100", "D101", "D103", "D104", "D105", "D106", "D107", "TC002", "TC003", "C901", "TRY300",]
-
-[tool.ruff.lint.flake8-tidy-imports]
-ban-relative-imports = "all"
-
-
-[tool.mypy]
-python_version = "3.13"
-strict = false
-explicit_package_bases = true
-namespace_packages = true
-plugins = ["pydantic.mypy"]
-exclude = ["tests/"]
-
-[[tool.mypy.overrides]]
-module = ["py-alarm-clock.*"]
-ignore_missing_imports = true
+[tool.flet.app]
+path = "src"
