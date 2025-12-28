@@ -21,7 +21,10 @@ def main(page: ft.Page):
 
     current_time_text = ft.Text(
         datetime.now().strftime("%H:%M:%S"),
-        theme_style=ft.TextThemeStyle.HEADLINE_LARGE,
+        size=80,
+        weight=ft.FontWeight.BOLD,
+        font_family="Courier New",
+        color=ft.Colors.GREEN_400,
     )
 
     def on_submit_click(_):
