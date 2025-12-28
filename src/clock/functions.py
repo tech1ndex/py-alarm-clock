@@ -5,11 +5,8 @@ class Clock:
         self.time = datetime.datetime.now().strftime("%H:%M:%S")
         self._alarm_time = None
 
-    def alarm_set(self) -> bool:
+    def is_alarm_set(self) -> bool:
         return self._alarm_time is not None
-
-    def get_current_time(self):
-        return self.time
 
     def set_alarm(self, alarm_time):
         if alarm_time != self.time:

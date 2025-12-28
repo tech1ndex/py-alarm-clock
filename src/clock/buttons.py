@@ -6,5 +6,4 @@ class Button(ft.Button):
         self.bgcolor = ft.Colors.WHITE
         self.color = ft.Colors.BLACK
         if on_click:
-            self.on_click = lambda e: on_click()
-
+            self.on_click = lambda e: on_click(e)
